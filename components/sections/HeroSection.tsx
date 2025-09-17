@@ -73,18 +73,16 @@ PROJECTS:
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-white opacity-5 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-white opacity-3 rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-10 w-48 h-48 bg-white opacity-4 rounded-full animate-pulse delay-500"></div>
+        {/* Removed white blobs for cleaner hero section */}
       </div>
 
       <div className="container mx-auto px-4 py-20 text-center text-white">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* Profile Image */}
           <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl">
+            <div className="w-82 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl">
               <img 
-                src="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+                src="/anusha1.png"
                 alt="Anusha Kudupudi"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
               />
@@ -106,12 +104,12 @@ PROJECTS:
             <Button 
               size="lg" 
               className="bg-white text-[#3182CE] hover:bg-gray-100 hover:scale-105 px-8 py-3 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-              onClick={() => scrollToSection('projects')}
+              onClick={() => scrollToSection('ProjectsSection')}
             >
               <Eye className="mr-2 h-5 w-5" />
               View My Work
             </Button>
-            <Button 
+            {/* <Button 
               size="lg" 
               variant="outline" 
               className="border-2 border-white text-white hover:bg-white hover:text-[#3182CE] hover:scale-105 px-8 py-3 text-lg font-semibold bg-transparent transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -119,11 +117,12 @@ PROJECTS:
             >
               <Download className="mr-2 h-5 w-5" />
               Download Resume
-            </Button>
+            </Button> */}
+
             <Button 
               size="lg" 
               className="bg-[#F6AD55] hover:bg-[#ED8936] hover:scale-105 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection('ContactSection')}
             >
               <Mail className="mr-2 h-5 w-5" />
               Contact Me

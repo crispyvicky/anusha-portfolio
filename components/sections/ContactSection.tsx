@@ -134,18 +134,17 @@ const ContactSection = () => {
               <h4 className="text-xl font-bold mb-4 text-white">Follow Me</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-12"
-                    style={{ 
-                      backgroundColor: '#3182CE',
-                      hover: { backgroundColor: '#2C5282' }
-                    }}
-                    aria-label={social.label}
-                  >
-                    <social.icon className="h-6 w-6 text-white" />
-                  </a>
+<a
+  key={index}
+  href={social.href}
+  className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-12"
+  style={{ 
+    backgroundColor: '#3182CE'
+  }}
+  aria-label={social.label}
+>
+  <social.icon className="h-6 w-6 text-white" />
+</a>
                 ))}
               </div>
             </div>
