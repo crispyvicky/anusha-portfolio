@@ -78,7 +78,7 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-[#F7FAFC] relative overflow-hidden">
+  <section id="projects" className="scroll-mt-24 py-20 bg-[#F7FAFC] relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url("https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
       

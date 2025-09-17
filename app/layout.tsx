@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: 'B.Tech graduate and frontend developer specializing in React, JavaScript, and modern web technologies. Currently interning at NIVSEE Technology working on client projects.',
   keywords: 'Anusha Kudupudi, Frontend Developer, React Developer, Web Development, JavaScript, HTML, CSS, Bootstrap, Portfolio',
   authors: [{ name: 'Anusha Kudupudi' }],
+  metadataBase: new URL('http://localhost:3000'),
   openGraph: {
     title: 'Anusha Kudupudi - Frontend Developer Portfolio',
     description: 'Passionate frontend developer with experience in client projects and modern web technologies.',

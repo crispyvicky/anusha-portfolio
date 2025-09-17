@@ -83,7 +83,7 @@ const ContactSection = () => {
   return (
     <section 
       id="contact"
-      className="py-20 text-white"
+      className="scroll-mt-24 py-20 text-white"
       style={{ backgroundColor: '#1A202C' }}
     >
       {/* Background Pattern */}
@@ -92,7 +92,7 @@ const ContactSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Let's Connect
+            Let&#39;s Connect
           </h2>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed opacity-90">
             Ready to discuss opportunities, collaborate on projects, or just have a chat about technology.
