@@ -1,3 +1,5 @@
+
+"use client";
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Star, Quote } from 'lucide-react';
@@ -73,7 +75,7 @@ const TestimonialsSection = () => {
                 <div className="mb-4">
                   <Quote className="h-8 w-8 mb-4" style={{ color: '#3182CE' }} />
                   <p className="text-lg leading-relaxed italic" style={{ color: '#4A5568' }}>
-                    "{testimonial.content}"
+                    &quot;{testimonial.content}&quot;
                   </p>
                 </div>
                 
@@ -100,8 +102,7 @@ const TestimonialsSection = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <Card 
-            className="p-8 max-w-3xl mx-auto"
+          <Card
             className="p-8 max-w-3xl mx-auto hover:shadow-lg hover:scale-105 transition-all duration-300"
             style={{ backgroundColor: '#F7FAFC', borderLeft: '4px solid #38A169' }}
           >
@@ -110,8 +111,8 @@ const TestimonialsSection = () => {
                 Ready to Work Together?
               </h4>
               <p className="text-lg leading-relaxed mb-6" style={{ color: '#4A5568' }}>
-                I'm always excited to take on new challenges and contribute to innovative projects. 
-                Let's discuss how I can add value to your team.
+                I&apos;m always excited to take on new challenges and contribute to innovative projects.
+                Let&apos;s discuss how I can add value to your team.
               </p>
               <div className="flex justify-center">
                 <div className="text-sm" style={{ color: '#38A169' }}>
