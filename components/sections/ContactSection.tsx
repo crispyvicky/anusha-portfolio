@@ -16,7 +16,7 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
-  const isEmailValid = (email: string) => /^(?:[^\s@]+@[^\s@]+\.[^\s@]+)$/.test(email);
+  const isEmailValid = (email: string) => /^(?:[^\s@]+@[^\s@]+\.[^\s@]+)$/.test(email.trim());
   const isFormValid =
     formData.name.trim().length > 1 &&
     isEmailValid(formData.email) &&
@@ -25,6 +25,8 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submitted (no validation):', { formData });
+    
     setIsSubmitting(true);
 
     const phone = '918367691465';
@@ -32,9 +34,14 @@ const ContactSection = () => {
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(composed)}`;
 
     try {
-      window.open(url, '_blank');
+      const newWin = window.open(url, '_blank');
+      if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+        // Popup likely blocked; fallback to same-tab navigation
+        window.location.href = url;
+      }
       setSubmitMessage('Opening WhatsApp…');
-    } catch {
+    } catch (error) {
+      console.error('WhatsApp open error:', error);
       setSubmitMessage('Could not open WhatsApp. Please check your pop-up settings.');
     } finally {
       setIsSubmitting(false);
@@ -95,13 +102,13 @@ const ContactSection = () => {
   return (
     <section 
       id="contact"
-      className="scroll-mt-24 py-20 text-white"
+      className="scroll-mt-24 py-20 text-white relative overflow-hidden"
       style={{ backgroundColor: '#1A202C' }}
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url("https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'url("https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
       
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Let&#39;s Connect
@@ -234,7 +241,6 @@ const ContactSection = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Enter your name"
-                        required
                         className="w-full border border-gray-300 bg-white text-[#1A202C] placeholder-gray-400 focus-visible:ring-2 focus-visible:ring-[#3182CE] focus:border-[#3182CE]"
                       />
                     </div>
@@ -249,7 +255,6 @@ const ContactSection = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="Enter your email"
-                        required
                         className="w-full border border-gray-300 bg-white text-[#1A202C] placeholder-gray-400 focus-visible:ring-2 focus-visible:ring-[#3182CE] focus:border-[#3182CE]"
                       />
                     </div>
@@ -266,7 +271,6 @@ const ContactSection = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       placeholder="What's this about?"
-                      required
                       className="w-full border border-gray-300 bg-white text-[#1A202C] placeholder-gray-400 focus-visible:ring-2 focus-visible:ring-[#3182CE] focus:border-[#3182CE]"
                     />
                   </div>
@@ -281,7 +285,6 @@ const ContactSection = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Tell me about your project or opportunity..."
-                      required
                       rows={6}
                       className="w-full border border-gray-300 bg-white text-[#1A202C] placeholder-gray-400 focus-visible:ring-2 focus-visible:ring-[#3182CE] focus:border-[#3182CE]"
                     />
@@ -291,7 +294,7 @@ const ContactSection = () => {
                     type="submit"
                     className="w-full text-white font-semibold py-3 text-lg hover:scale-105 transition-transform disabled:opacity-50"
                     style={{ backgroundColor: '#3182CE' }}
-                    disabled={isSubmitting || !isFormValid}
+                    disabled={isSubmitting}
                   >
                     <Send className="mr-2 h-5 w-5" />
                     {isSubmitting ? 'Sending...' : 'Send Message'}

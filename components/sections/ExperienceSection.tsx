@@ -121,6 +121,78 @@ const ExperienceSection = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* GENESIS POWERONICS Internship */}
+            <Card className="ml-16 mt-10 bg-white border-[#E2E8F0] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden">
+              <CardContent className="p-8">
+                <div className="mb-6">
+                  <img 
+                    src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
+                    alt="GENESIS POWERONICS"
+                    className="w-full h-32 object-cover rounded-lg"
+                  />
+                </div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center">
+                    <Building className="h-6 w-6 mr-3" style={{ color: '#3182CE' }} />
+                    <h3 className="text-2xl font-bold" style={{ color: '#1A202C' }}>
+                      GENESIS POWERONICS
+                    </h3>
+                  </div>
+                  <Badge 
+                    className="text-white font-medium"
+                    style={{ backgroundColor: '#805AD5' }}
+                  >
+                    Internship
+                  </Badge>
+                </div>
+
+                <div className="mb-6">
+                  <h4 className="text-xl font-semibold mb-2" style={{ color: '#3182CE' }}>
+                    PHP Full Stack Developer
+                  </h4>
+                  <div className="flex items-center text-sm" style={{ color: '#4A5568' }}>
+                    <Clock className="h-4 w-4 mr-2" />
+                    Jul 2025 – Oct 2025 • Hyderabad
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <h5 className="text-lg font-semibold mb-4" style={{ color: '#1A202C' }}>
+                    Summary
+                  </h5>
+                  <div className="space-y-3">
+                    <div className="flex items-start">
+                      <div 
+                        className="w-2 h-2 rounded-full mt-2 mr-3 flex-shrink-0"
+                        style={{ backgroundColor: '#F6AD55' }}
+                      ></div>
+                      <p style={{ color: '#4A5568' }}>
+                        Skilled in developing dynamic web applications using PHP, MySQL, HTML, CSS, JavaScript, and frameworks, with experience in both frontend and backend development.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h5 className="text-lg font-semibold mb-4" style={{ color: '#1A202C' }}>
+                    Technologies
+                  </h5>
+                  <div className="flex flex-wrap gap-2">
+                    {['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript', 'Full Stack'].map((tech, index) => (
+                      <Badge 
+                        key={index}
+                        variant="outline"
+                        className="font-medium"
+                        style={{ borderColor: '#3182CE', color: '#3182CE' }}
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Additional Info */}

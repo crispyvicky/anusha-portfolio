@@ -80,13 +80,14 @@ const HeroSection = () => {
           
           <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <Button
+              asChild
               size="lg"
               className="bg-white text-[#3182CE] hover:bg-gray-100 hover:scale-105 px-8 py-3 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-              type="button"
-              onClick={() => scrollToSection('projects')}
             >
-              <Eye className="mr-2 h-5 w-5" />
-              View My Work
+              <a href="#projects">
+                <Eye className="mr-2 h-5 w-5" />
+                View My Work
+              </a>
             </Button>
 
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -127,13 +128,14 @@ const HeroSection = () => {
             </Dialog>
 
             <Button
+              asChild
               size="lg"
               className="bg-[#F6AD55] hover:bg-[#ED8936] hover:scale-105 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-              type="button"
-              onClick={() => scrollToSection('contact')}
             >
-              <Mail className="mr-2 h-5 w-5" />
-              Contact Me
+              <a href="#contact">
+                <Mail className="mr-2 h-5 w-5" />
+                Contact Me
+              </a>
             </Button>
           </div>
 

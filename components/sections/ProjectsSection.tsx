@@ -80,9 +80,9 @@ const ProjectsSection = () => {
   return (
   <section id="projects" className="scroll-mt-24 py-20 bg-[#F7FAFC] relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url("https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'url("https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop")', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
       
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#1A202C' }}>
             Featured Projects
@@ -105,7 +105,7 @@ const ProjectsSection = () => {
                 onMouseEnter={() => setHoveredProject(index)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 overflow-hidden pointer-events-none">
                   <img 
                     src={project.image}
                     alt={project.title}
@@ -113,7 +113,7 @@ const ProjectsSection = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
-                <CardHeader>
+                <CardHeader className="relative z-10">
                   <div className="flex justify-between items-start mb-2">
                     <Badge 
                       className="text-white font-medium mb-2"
@@ -127,7 +127,7 @@ const ProjectsSection = () => {
                     {project.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative z-10">
                   <p className="mb-4 leading-relaxed" style={{ color: '#4A5568' }}>
                     {project.description}
                   </p>
@@ -151,12 +151,14 @@ const ProjectsSection = () => {
                   </div>
 
                   <Button 
+                    asChild
                     className="w-full text-white font-semibold hover:scale-105 transition-transform"
                     style={{ backgroundColor: '#3182CE' }}
-                    onClick={() => window.open(project.url, '_blank')}
                   >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Visit Live Site
+                    <a href={project.url} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      Visit Live Site
+                    </a>
                   </Button>
                 </CardContent>
               </Card>
