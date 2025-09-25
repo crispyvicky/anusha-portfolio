@@ -9,8 +9,8 @@ const SkillsSection = () => {
 
   const skillCategories = [
     {
-      category: 'Frontend Development',
-      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Bootstrap'],
+      category: 'Full Stack Development',
+      skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Bootstrap', 'PHP', 'Power BI'],
       color: '#805AD5',
       image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
     },

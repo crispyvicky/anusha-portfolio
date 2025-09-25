@@ -8,9 +8,9 @@ const AboutSection = () => {
   const [hoveredStat, setHoveredStat] = useState<number | null>(null);
 
   const stats = [
-    { number: '7.53', label: 'CGPA', color: '#3182CE' },
+    // { number: '7.53', label: 'CGPA', color: '#3182CE' },
     { number: '2024', label: 'Graduate', color: '#3182CE' },
-    { number: '10+', label: 'Projects', color: '#3182CE' },
+    // { number: '10+', label: 'Projects', color: '#3182CE' },
     { number: '3+', label: 'Live Sites', color: '#38A169' },
   ];
 

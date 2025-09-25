@@ -5,7 +5,7 @@ import { Building, Clock, CheckCircle } from 'lucide-react';
 const ExperienceSection = () => {
   const experience = {
     company: 'NIVSEE TECHNOLOGY PVT. LTD.',
-    position: 'Frontend Development Intern',
+    position: 'Full Stack Development Intern',
     period: 'Sep 2024 - Present',
     current: true,
     image: 'https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',

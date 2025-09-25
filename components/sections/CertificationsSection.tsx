@@ -26,6 +26,14 @@ const CertificationsSection = () => {
       image: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop'
     },
     {
+      title: 'Power BI Certification',
+      issuer: 'Simplilearn',
+      date: '2024',
+      icon: '📊',
+      description: 'Business intelligence, DAX, data modeling, and interactive dashboards in Power BI',
+      image: 'https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop'
+    },
+    {
       title: 'Learn Python and ML',
       issuer: 'Devtown',
       date: '2023',

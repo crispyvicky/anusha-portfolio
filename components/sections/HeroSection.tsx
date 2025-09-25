@@ -1,10 +1,18 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import { ChevronDown, Download, Eye, Mail } from 'lucide-react';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -19,41 +27,6 @@ const HeroSection = () => {
     } else {
       console.warn(`Element with id '${sectionId}' not found.`);
     }
-  };
-
-  const downloadResume = () => {
-    // Create a simple resume download
-    const resumeContent = `
-ANUSHA KUDUPUDI
-Frontend Developer | B.Tech Graduate
-
-Contact: anushakudupudi2020@gmail.com | +91 8367691465
-Location: Hyderabad, Telangana
-
-EXPERIENCE:
-Frontend Development Intern - NIVSEE TECHNOLOGY PVT. LTD. (Sep 2024 - Present)
-
-EDUCATION:
-B.Tech Computer Science - Malla Reddy Institute (2020-2024) - CGPA: 7.53
-
-SKILLS:
-HTML, CSS, JavaScript, React, Bootstrap, Python, MySQL
-
-PROJECTS:
-- Modi Builders Website (https://www.modibuilders.com/)
-- Biotrendy Clinic Website (https://biotrendy.in/)
-- Caves16 Healthcare Website (https://caves16healthcare.com/)
-    `;
-    
-    const blob = new Blob([resumeContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Anusha_Kudupudi_Resume.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
   };
 
   return (
@@ -80,7 +53,7 @@ PROJECTS:
         {/* Removed white blobs for cleaner hero section */}
       </div>
 
-      <div className="container mx-auto px-4 py-20 text-center text-white">
+      <div className="container mx-auto px-4 py-20 text-center text-white relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Profile Image */}
           <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
@@ -98,7 +71,7 @@ PROJECTS:
             Anusha Kudupudi
           </h1>
           <p className={`text-xl md:text-2xl mb-4 transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`} style={{ textShadow: '0 0 10px rgba(0, 0, 0, 0.7)' }}>
-            B.Tech Graduate | Frontend Developer
+            B.Tech Graduate | Full Stack Developer
           </p>
           <p className={`text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`} style={{ textShadow: '0 0 10px rgba(0, 0, 0, 0.7)' }}>
             Motivated and enthusiastic developer with strong problem-solving skills.
@@ -109,24 +82,54 @@ PROJECTS:
             <Button
               size="lg"
               className="bg-white text-[#3182CE] hover:bg-gray-100 hover:scale-105 px-8 py-3 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              type="button"
               onClick={() => scrollToSection('projects')}
             >
               <Eye className="mr-2 h-5 w-5" />
               View My Work
             </Button>
-            {/* <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-2 border-white text-white hover:bg-white hover:text-[#3182CE] hover:scale-105 px-8 py-3 text-lg font-semibold bg-transparent transition-all duration-300 shadow-lg hover:shadow-xl"
-              onClick={downloadResume}
-            >
-              <Download className="mr-2 h-5 w-5" />
-              Download Resume
-            </Button> */}
+
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button
+                  type="button"
+                  size="lg"
+                  variant="outline"
+                  className="bg-white text-[#3182CE] hover:bg-black hover:scale-105 px-8 py-3 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                  onClick={() => setIsDialogOpen(true)}
+                  data-resume-trigger
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  View Resume
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-4xl">
+                <DialogHeader>
+                  <DialogTitle>Resume</DialogTitle>
+                </DialogHeader>
+                <div className="mt-4">
+                  <iframe
+                    src="/K.Anusha%20Resume%20New.pdf"
+                    width="100%"
+                    height="600px"
+                    className="border rounded"
+                  />
+                  <div className="mt-4 text-center">
+                    <a href="/K.Anusha%20Resume%20New.pdf" download>
+                      <Button>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download Resume
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
 
             <Button
               size="lg"
               className="bg-[#F6AD55] hover:bg-[#ED8936] hover:scale-105 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              type="button"
               onClick={() => scrollToSection('contact')}
             >
               <Mail className="mr-2 h-5 w-5" />
@@ -140,14 +143,15 @@ PROJECTS:
         </div>
       </div>
 
-      <div
+      {/* <div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:scale-110 transition-transform"
         onClick={() => scrollToSection('about')}
       >
         <ChevronDown className="h-8 w-8 text-white" />
-      </div>
+      </div> */}
+
+      
     </section>
   );
 };
-
 export default HeroSection;

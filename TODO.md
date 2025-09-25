@@ -1,0 +1,4 @@
+- [x] Import Dialog components from ui/dialog in HeroSection.tsx
+- [x] Add useState for dialog open state
+- [x] Add onClick handler to View Resume button to open dialog
+- [x] Add Dialog JSX with iframe to display PDF and download button

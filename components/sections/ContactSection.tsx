@@ -16,19 +16,31 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
+  const isEmailValid = (email: string) => /^(?:[^\s@]+@[^\s@]+\.[^\s@]+)$/.test(email);
+  const isFormValid =
+    formData.name.trim().length > 1 &&
+    isEmailValid(formData.email) &&
+    formData.subject.trim().length > 2 &&
+    formData.message.trim().length > 4;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    const phone = '918367691465';
+    const composed = `Hello, I would like to get in touch.\n\nName: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(composed)}`;
+
+    try {
+      window.open(url, '_blank');
+      setSubmitMessage('Opening WhatsApp…');
+    } catch {
+      setSubmitMessage('Could not open WhatsApp. Please check your pop-up settings.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitMessage('Thank you for your message! I\'ll get back to you soon.');
       setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Clear success message after 5 seconds
       setTimeout(() => setSubmitMessage(''), 5000);
-    }, 2000);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -223,7 +235,7 @@ const ContactSection = () => {
                         onChange={handleInputChange}
                         placeholder="Enter your name"
                         required
-                        className="w-full"
+                        className="w-full border border-gray-300 bg-white text-[#1A202C] placeholder-gray-400 focus-visible:ring-2 focus-visible:ring-[#3182CE] focus:border-[#3182CE]"
                       />
                     </div>
                     <div>
@@ -238,7 +250,7 @@ const ContactSection = () => {
                         onChange={handleInputChange}
                         placeholder="Enter your email"
                         required
-                        className="w-full"
+                        className="w-full border border-gray-300 bg-white text-[#1A202C] placeholder-gray-400 focus-visible:ring-2 focus-visible:ring-[#3182CE] focus:border-[#3182CE]"
                       />
                     </div>
                   </div>
@@ -255,7 +267,7 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       placeholder="What's this about?"
                       required
-                      className="w-full"
+                      className="w-full border border-gray-300 bg-white text-[#1A202C] placeholder-gray-400 focus-visible:ring-2 focus-visible:ring-[#3182CE] focus:border-[#3182CE]"
                     />
                   </div>
 
@@ -271,7 +283,7 @@ const ContactSection = () => {
                       placeholder="Tell me about your project or opportunity..."
                       required
                       rows={6}
-                      className="w-full"
+                      className="w-full border border-gray-300 bg-white text-[#1A202C] placeholder-gray-400 focus-visible:ring-2 focus-visible:ring-[#3182CE] focus:border-[#3182CE]"
                     />
                   </div>
 
@@ -279,7 +291,7 @@ const ContactSection = () => {
                     type="submit"
                     className="w-full text-white font-semibold py-3 text-lg hover:scale-105 transition-transform disabled:opacity-50"
                     style={{ backgroundColor: '#3182CE' }}
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !isFormValid}
                   >
                     <Send className="mr-2 h-5 w-5" />
                     {isSubmitting ? 'Sending...' : 'Send Message'}
