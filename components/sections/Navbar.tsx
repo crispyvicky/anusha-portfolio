@@ -41,8 +41,19 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <Button asChild variant="outline" className="ml-2">
-            <a href="#" onClick={(e) => { e.preventDefault(); const el = document.querySelector('[data-resume-trigger]') as HTMLButtonElement | null; el?.click(); }}>
+          <Button
+            variant="outline"
+            className="ml-2 hidden md:inline-flex"
+            onClick={() => { const el = document.querySelector('[data-resume-trigger]') as HTMLButtonElement | null; el?.click(); }}
+          >
+            View Resume
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            className="ml-2 md:hidden"
+          >
+            <a href="/K.Anusha%20Resume%20New.pdf" target="_blank" rel="noopener noreferrer">
               View Resume
             </a>
           </Button>
@@ -70,7 +81,11 @@ const Navbar = () => {
                 {item.label}
               </a>
             ))}
-            <Button variant="outline" onClick={() => { setOpen(false); const el = document.querySelector('[data-resume-trigger]') as HTMLButtonElement | null; el?.click(); }}>View Resume</Button>
+            <Button asChild variant="outline">
+              <a href="/K.Anusha%20Resume%20New.pdf" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+                View Resume
+              </a>
+            </Button>
           </div>
         </div>
       )}

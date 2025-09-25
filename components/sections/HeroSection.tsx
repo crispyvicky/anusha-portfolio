@@ -103,15 +103,15 @@ const HeroSection = () => {
                   View Resume
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl">
+              <DialogContent className="w-[95vw] max-w-4xl md:w-auto">
                 <DialogHeader>
                   <DialogTitle>Resume</DialogTitle>
                 </DialogHeader>
-                <div className="mt-4">
+                <div className="mt-4 md:h-[70vh]">
                   <iframe
                     src="/K.Anusha%20Resume%20New.pdf"
                     width="100%"
-                    height="600px"
+                    height="100%"
                     className="border rounded"
                   />
                   <div className="mt-4 text-center">
